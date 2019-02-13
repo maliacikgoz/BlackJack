@@ -46,7 +46,8 @@ while True:
 
         elif action_taken == "stand":
             print("Dealer's cards: ", dealer_cards)
-            # Sum of the Player Cards
+            
+            # Compare the hands
             if sum(dealer_cards) > sum(player_cards):
                 print("You Lose!")
                 break
