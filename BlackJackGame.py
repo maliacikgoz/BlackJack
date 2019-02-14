@@ -65,12 +65,13 @@ while True:
             print("Dealer's cards: ", dealer_cards)
 
             # Compare the hands
-            if sum(dealer_cards) > sum(player_cards):
-                print("You Lose!")
-                break
-            else:
-                print("You Win!")
-                break
+            while dealer_cards <= 21:
+                if sum(dealer_cards) > sum(player_cards):
+                    print("You Lose!")
+                    break
+                else:
+                    print("You Win!")
+                    break
         else:
             print("Please write [hit] or [stay]")
 
