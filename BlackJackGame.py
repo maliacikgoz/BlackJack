@@ -1,4 +1,5 @@
 import random
+
 # TODO: Add betting with money
 # TODO: Add card decks
 # TODO: Generate cards from card decks
@@ -18,6 +19,7 @@ while True:
 
     dealer_cards = []
     player_cards = []
+    action_taken = ""
 
     # Dealer's cards initials
     while len(dealer_cards) != 2:
@@ -45,7 +47,7 @@ while True:
             pass
 
     # Ask if player wants to stand or hit
-    while sum(player_cards) < 21:
+    while sum(player_cards) < 21 and action_taken != "stand":
         action_taken = str(input("Do you want to [stand] or [hit] ? ")).lower()
 
         if action_taken == "hit":
@@ -59,21 +61,20 @@ while True:
                 dealer_cards.append(random.randint(1, 10))
                 # Sum of the Dealer cards
                 if sum(dealer_cards) == 21:
-                    print("Dealer has 21 and You Lose!")
+                    print("Dealer has 21!")
                 elif sum(dealer_cards) > 21:
                     print("Dealer has Busted!")
-            print("Dealer's cards: ", dealer_cards)
+                print("Dealer's cards: ", dealer_cards)
 
             # Compare the hands
-            while dealer_cards <= 21:
+            while sum(dealer_cards) <= 21:
                 if sum(dealer_cards) > sum(player_cards):
                     print("You Lose!")
-                    break
                 else:
                     print("You Win!")
-                    break
+                break
         else:
-            print("Please write [hit] or [stay]")
+            print("Please write [stand] or [hit]")
 
     if sum(player_cards) == 21:
         print("You reached 21, You win!")
@@ -84,4 +85,3 @@ while True:
         print("Dealer's cards: ", dealer_cards)
     else:
         pass
-
